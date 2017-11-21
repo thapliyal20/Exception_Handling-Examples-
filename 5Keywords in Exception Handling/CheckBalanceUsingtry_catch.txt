@@ -1,0 +1,47 @@
+//Check Balance using try() catch()
+
+
+public class LowBalanceException extends Exception
+{
+	
+	public LowBalanceException(String msg)
+	{
+		super(msg);
+	}
+}
+
+************************************************************
+
+import java.util.Scanner;
+
+
+public class TestAccountDemo
+{
+
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int currentBalance=50000;
+		System.out.println("Enter Withdraw Amount :");
+		int withdrawAmt=sc.nextInt();
+		
+		if(withdrawAmt>currentBalance)
+		{
+			try
+			{
+				throw new LowBalanceException
+				("Insufficient Blance in your Account");
+			}
+			catch (LowBalanceException e)
+			{
+				System.out.println(e);
+			}
+		}
+		else
+		{
+			System.out.println(" You have sufficient balance "+
+								"You can Withdraw the money");
+		}
+	}
+
+}
